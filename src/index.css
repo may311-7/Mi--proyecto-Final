@@ -2,7 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Estilos globales opcionales */
-body {
-  @apply font-sans antialiased;
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 text-gray-800 font-sans transition-colors duration-500;
+  }
+
+  .dark body {
+    @apply from-gray-900 via-gray-800 to-gray-700 text-gray-100;
+  }
+
+  h1, h2, h3 {
+    @apply font-semibold tracking-tight;
+  }
+
+  button, a {
+    @apply transition-transform duration-200 active:scale-95;
+  }
 }
+/* 🌌 Fondo tipo aurora animado */
+.aurora-bg {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(233, 196, 106, 0.3), transparent 70%),
+              radial-gradient(circle at 70% 70%, rgba(42, 157, 143, 0.25), transparent 60%),
+              radial-gradient(circle at 60% 20%, rgba(231, 111, 81, 0.25), transparent 70%);
+  filter: blur(80px);
+  animation: auroraMove 20s ease-in-out infinite alternate;
+}
+
+@keyframes auroraMove {
+  0% {
+    transform: translate(-10%, -10%) scale(1);
+  }
+  50% {
+    transform: translate(10%, 10%) scale(1.05);
+  }
+  100% {
+    transform: translate(-10%, 5%) scale(1);
+  }
+}
+
