@@ -1,0 +1,50 @@
+/* Fondo retro: rejilla + rayas tipo scanline + ligero neón */
+.retro-bg {
+  background-color: #071023;
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(255,255,255,0.03) 0, transparent 10%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 14px),
+    linear-gradient(180deg, rgba(255,0,150,0.02), rgba(0,204,255,0.02));
+  background-size: auto, 28px 28px, cover;
+  background-attachment: fixed;
+  color: #e6f0ff;
+}
+
+/* Marco interior con efecto pixelado/neón */
+.retro-frame {
+  box-shadow:
+    0 8px 24px rgba(2,6,23,0.7),
+    inset 0 0 0 3px rgba(0,0,0,0.6);
+  filter: saturate(1.05);
+  backdrop-filter: blur(2px);
+}
+
+/* Título con efecto neón/pixel */
+.retro-text {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-shadow:
+    0 0 6px rgba(255,0,150,0.35),
+    0 0 12px rgba(0,204,255,0.12),
+    2px 2px 0 rgba(0,0,0,0.6);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Opcional: efecto scanlines sobre el contenido */
+.retro-bg::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.00) 50%);
+  background-size: 100% 4px;
+  mix-blend-mode: overlay;
+  opacity: 0.7;
+}
+
+/* Ajustes responsive menores */
+@media (max-width: 640px) {
+  .retro-text { font-size: 1rem; letter-spacing: 0.12em; }
+}
